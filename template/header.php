@@ -11,12 +11,13 @@ ini_set('display_errors', 1);
     <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/style.css">
-        <link href="https://fonts.googleapis.com/css?family=Libre+Barcode+39&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css?family=UnifrakturCook:700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
               crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/5e3092f30b.js" crossorigin="anonymous"></script>
+         <title><?php echo $config['app_name']?></title>
 
         <style>
             /* background for the all page */
@@ -29,6 +30,7 @@ ini_set('display_errors', 1);
             .container {
                 width: 1170px;
                 margin: auto;
+
             }
 
             .header .Navbar {
@@ -39,8 +41,10 @@ ini_set('display_errors', 1);
             }
 
             .header .Navbar h2 a {
+                text-decoration: none;
+                text-align: center;
                 margin-left: 490px;
-                font-family: 'Libre Barcode 39', cursive;
+                font-family: 'UnifrakturCook', cursive;
                 color: black;
                 font-size: 50px;
                 float: left;
@@ -60,6 +64,7 @@ ini_set('display_errors', 1);
             }
 
             .header .Navbar li a  {
+                text-decoration: none;
                 color: black;
                 font-family: Styles;
             }
@@ -74,23 +79,33 @@ ini_set('display_errors', 1);
                 float: left;
                 padding: 10px;
             }
+
             .custom-card-image {
                 height: 200px;
                 background-size: cover;
                 background-position: center;
             }
+            .fas {
+                margin:10px ;
+                font-size: 27px;
+            color: black;
+            }
 
         </style>
     </head>
 <body>
-    <div class="header">
-        <div class="Navbar container">
+    <div class="header container-fluid">
+        <div class="Navbar ">
             <div class="container">
                 <h2>
-                <a href="<?php echo $config['app_url'] ?>index.php">Stor</a>
+                <a href="<?php echo $config['app_url'] ?>index.php">Store</a>
                 </h2>
                 <ul>
+                    <a href="<?php echo $config['app_url'] ?>shopping_card.php">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
 <?php if (!isset($_SESSION['logged_in'])): ?>
+
                     <li>
                         <a href="<?php echo $config['app_url'] ?>login.php">Login</a>
                     </li>

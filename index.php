@@ -21,6 +21,7 @@ $Service = new Service;
         <?php foreach ($products as $product){ ?>
             <div class="col-md-4 col-sm-6">
                 <div class="card mb-3 shadow">
+                    <a style="color: black;text-decoration: none;" href="shopping_card.php">
                     <div class="card-body">
                         <div class="custom-card-image" style="background-image: url('<?php echo $config['app_url'].$product['image']?>')"></div>
                         <div class="card-body">
