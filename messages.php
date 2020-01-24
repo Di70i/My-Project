@@ -4,6 +4,8 @@ require_once 'template/header.php';
 require_once 'config/app.php';
 require_once 'config/database.php';
 
+
+
 $query = "select *, m.id as message_id
         , s.id service_id from messages m
         left join services s
@@ -55,9 +57,9 @@ if(!isset($_GET['id'])){
 
 <?php }else{
     $messageQuery = "select * from messages m
-                         left join services s 
-                         on m.service_id = s.id
-                         where m.id=" . $_GET['id'] . " limit 1";
+                     left join services s 
+                     on m.service_id = s.id
+                     where m.id=" . $_GET['id'] . " limit 1";
     $message = $mysqli->query($messageQuery)->fetch_array(MYSQLI_ASSOC);
     ?>
     <div class="card">
@@ -67,7 +69,7 @@ if(!isset($_GET['id'])){
             <div class="small"><?php echo $message['email'] ?></div>
         </h5>
         <div class="card-body">
-            <div>Service : <?php if ($message['name']){ echo $message['name'];}else{'No Service';}?></div>
+            <div>Service : <?php if ($message['name']){ echo $message['name'];}else{ echo 'No Service';}?></div>
             <?php echo $message['message'] ?>
         </div>
         <?php if ($message['document']) { ?>
@@ -79,14 +81,13 @@ if(!isset($_GET['id'])){
             </div>
         <?php } ?>
     </div>
-    <?php
+<?php
+    
 }
 if (isset($_POST['message_id'])){
     $mysqli->query("delete from messages where id=" .$_POST['message_id']);
     header('location: messages.php');
     die();
-} ?>
+}
 
-<?php
 require_once 'template/footer.php';
-?>

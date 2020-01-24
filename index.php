@@ -1,5 +1,5 @@
 <?php
-$titel = "Home Page";
+$title = "Home Page";
 require_once 'template/header.php';
 require 'classes/Service.php';
 require 'classes/Product.php';

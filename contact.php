@@ -10,7 +10,7 @@ if (isset($_SESSION['contact_form'])) {
 $s = new Service;
 $s->taxRate = .05;
 
-$services = $mysqli->query("select id, name, price from services order by name ")
+$services = $mysqli->query("select id, name, price from services order by id ")
 
     ->fetch_all(MYSQLI_ASSOC);
 ?>
@@ -19,7 +19,7 @@ $services = $mysqli->query("select id, name, price from services order by name "
 
     <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
         <div  class="form-group">
-            <label for="name">Your name</label>
+            <label for="name"> Your name</label>
             <input type="text" name="name" value="<?php if(isset($_SESSION['contact_form']['name'])) echo $_SESSION['contact_form']['name'] ?> "class="form-control" placeholder="Your name">
             <span class="text-danger"><?php echo $nameError ?></span>
         </div>
@@ -37,7 +37,7 @@ $services = $mysqli->query("select id, name, price from services order by name "
 
         <div class="form-group">
             <label for="services">Services</label>
-            <select name="services" id="services" class="form-control">
+            <select name="service_id" id="services" class="form-control">
                 <?php foreach($services as $service) {?>
                     <option value="<?php echo $service['id'] ?>">
                         <?php echo $service['name'] ?>

@@ -99,9 +99,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     if (!$nameError && !$emailError && !$messageError && !$documentError) {
 
+        $fileName ? $filePath = $uploadDir.'/'.$fileName : $filePath = '';
         $insertMessage =
-            "insert into messages (contact_name,email,document,message)".
-            "values ('$name','$email','$uploadDir/$fileName','$message')";
+            "insert into messages (contact_name, email, document, message ,service_id)".
+            "values ('$name','$email','$fileName','$message', ".$_POST['service_id']." )";
 
         $mysqli->query($insertMessage);
 
