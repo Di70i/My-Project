@@ -86,7 +86,6 @@ if(!isset($_GET['id'])){
 }
 if (isset($_POST['message_id'])){
     $mysqli->query("delete from messages where id=" .$_POST['message_id']);
-    header('location: messages.php');
     die();
 }
 
