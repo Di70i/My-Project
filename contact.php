@@ -11,7 +11,7 @@ $s = new Service;
 $s->taxRate = .05;
 
 $services = $mysqli->query("select id, name, price from services order by id ")
-
+    
     ->fetch_all(MYSQLI_ASSOC);
 ?>
 <?php if ($s->available) { ?>

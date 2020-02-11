@@ -6,18 +6,31 @@ require_once 'config/database.php';
 
 
 
-$query = "select *, m.id as message_id
+//$query = "select *, m.id as message_id
+//        , s.id service_id from messages m
+//        left join services s
+//        on m.service_id = s.id
+//        order by m.id
+//            ";
+//$messages = $mysqli->query($query)
+//    ->fetch_all(MYSQLI_ASSOC)
+
+
+$st =$mysqli->prepare("select *, m.id as message_id
         , s.id service_id from messages m
         left join services s
         on m.service_id = s.id
-        order by m.id
-            ";
-$messages = $mysqli->query($query)
-    ->fetch_all(MYSQLI_ASSOC)
+        order by m.id");
+
+$st->execute();
+$messages = $st->get_result()->fetch_all(MYSQLI_ASSOC)
+
+
 ?>
 <?php
 if(!isset($_GET['id'])){
     ?>
+
     <h2>Received Messages</h2>
     <div class="table-responsive">
         <table class="table table-hover table-striped">
@@ -85,8 +98,18 @@ if(!isset($_GET['id'])){
     
 }
 if (isset($_POST['message_id'])){
-    $mysqli->query("delete from messages where id=" .$_POST['message_id']);
-    die();
+
+    $st = $mysqli->prepare("delete from messages where id= ?");
+    $st->bind_param('i' , $messageId);
+    $messageId = $_POST['message_id'];
+    $st->execute();
+
+
+    if ($_POST['document']){
+        unlink($config['upload_dir'].$_POST['document']);
+    }
+
+    echo "<script>location.href = 'messages.php'</script>";
 }
 
 require_once 'template/footer.php';

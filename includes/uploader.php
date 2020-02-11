@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__."/../config/database.php";
 $uploadDir = 'uploads';
+$fileName = '';
 
 function filterString($field){
     $field = filter_var(trim($field),FILTER_SANITIZE_STRING);
@@ -100,11 +101,27 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if (!$nameError && !$emailError && !$messageError && !$documentError) {
 
         $fileName ? $filePath = $uploadDir.'/'.$fileName : $filePath = '';
-        $insertMessage =
-            "insert into messages (contact_name, email, document, message ,service_id)".
-            "values ('$name','$email','$fileName','$message', ".$_POST['service_id']." )";
 
-        $mysqli->query($insertMessage);
+        $statement = $mysqli->prepare("insert into messages 
+          (contact_name, email, document, message , service_id)
+          values (?, ?, ?, ?, ?)");
+
+        $statement->bind_param('ssssi',$dbContactName , $dbEmail , $dbDocument , $dbMessage , $dbService_Id);
+
+
+        $dbContactName = $name;
+        $dbEmail = $email;
+        $dbDocument = $fileName;
+        $dbMessage = $message;
+        $dbService_Id = $_POST['service_id'];
+
+        $statement->execute();
+
+//        $insertMessage =
+//            "insert into messages (contact_name, email, document, message ,service_id)".
+//            "values ('$name','$email','$fileName','$message', ".$_POST['service_id']." )";
+//
+//        $mysqli->query($insertMessage);
 
 
         $headers = 'MIME-Version: 1.0' . "\r\n";

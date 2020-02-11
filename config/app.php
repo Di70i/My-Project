@@ -1,6 +1,6 @@
 <?php
 $config = [
-        'app_name' => 'Service App',
+        'app_name' => 'SDate',
         'admin_email'=> 'abdulrahmankkn@localhost',
         'lang' => 'en',
         'dir' => 'ltr',
