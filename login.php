@@ -65,20 +65,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <hr>
         <?php include 'template/errors.php'?>
 
-        <div class="form-group">
+        <div  class="form-group row">
             <label for="email">Your email:</label>
             <input type="email" name="email" class="from-control" placeholder="Your email" id="email" value="<?php echo $email?>">
 
         </div>
 
-        <div class="form-group">
+        <div class="form-group row">
             <label for="password">Your password:</label>
             <input type="password" name="password" class="from-control" placeholder="Your password" id="password">
         </div>
 
-        <div class="form-group">
+        <div class="form-group row">
             <button class="btn btn-success">Register!</button>
         </div>
     </form>
 
 </div>
+<?php
+include 'template/footer.php';
+
