@@ -10,8 +10,27 @@ if (isset($_SESSION['logged_in'])) {
     header("location: index.php");
 }
 
+if (!isset($_GET['token']) || !$_GET['token']){
+    die('token parameter is missing');
+}
+
+$new = date('Y:m:d H:i:s');
+
+$stmt = $mysqli->prepare("select * from password_resets where token = ? and expires_at > '$new'");
+$stmt->bind_param('s' , $token);
+$token = $_GET['token'];
+
+$stmt->execute();
+
+$result = $stmt->get_result();
+
+if (!$result->num_rows){
+    die('Token is not valid');
+}
+
+
+
 $errors = [];
-$email = '';
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
