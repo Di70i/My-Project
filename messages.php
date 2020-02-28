@@ -4,18 +4,6 @@ require_once 'template/header.php';
 require_once 'config/app.php';
 require_once 'config/database.php';
 
-
-
-//$query = "select *, m.id as message_id
-//        , s.id service_id from messages m
-//        left join services s
-//        on m.service_id = s.id
-//        order by m.id
-//            ";
-//$messages = $mysqli->query($query)
-//    ->fetch_all(MYSQLI_ASSOC)
-
-
 $st =$mysqli->prepare("select *, m.id as message_id
         , s.id service_id from messages m
         left join services s

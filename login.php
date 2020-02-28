@@ -78,6 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <div class="form-group row">
             <button class="btn btn-success">Register!</button>
+            <a href="Password_reset.php">Forgot your password?</a>
         </div>
     </form>
 

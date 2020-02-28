@@ -1,5 +1,5 @@
 <?php
-$title = "Register";
+$title="Register";
 require_once 'template/header.php';
 require 'config/app.php';
 require_once 'config/database.php';
@@ -8,9 +8,9 @@ if (isset($_SESSION['logged_in'])) {
 
     header("location: index.php");
 }
-$errors = [];
-$name = '';
-$email = '';
+$errors=[];
+$name='';
+$email='';
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -50,50 +50,55 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $query="insert into users (email , name , password) values ('$email' , '$name' , '$password')";
         $mysqli->query($query);
 
+        $_SESSION['logged_in']=true;
+        $_SESSION['user_id']=$mysqli->insert_id;
+        $_SESSION['user_name']=$name;
+        $_SESSION['success_message']="Welcome , $name";
+
+       header("location: index.php");
     }
-    $_SESSION['logged_in']=true;
-    $_SESSION['user_id']=$mysqli->insert_id;
-    $_SESSION['user_name'] = $name;
-    $_SESSION['success_message'] = "Welcome , $name";
-
-
 
 }
 
 ?>
 
-<div id="register">
-    <form action="" method="post">
+    <div id="register">
+
         <h2>Welcome to our website</h2>
         <h6 class="text-info">Please fil the form below</h6>
         <hr>
-        <?php include 'template/errors.php'?>
-        <div class="form-group">
-            <label for="name">Your name:</label>
-            <input type="name" name="name" class="from-control" placeholder="Your name" id="name" value="<?php echo $name?>">
-        </div>
+        <?php include 'template/errors.php' ?>
+        <form action="" method="post">
+            <div class="form-group">
+                <label for="name">Your name:</label>
+                <input type="name" name="name" class="from-control" placeholder="Your name" id="name"
+                       value="<?php echo $name ?>">
+            </div>
 
-        <div class="form-group">
-            <label for="email">Your email:</label>
-            <input type="email" name="email" class="from-control" placeholder="Your email" id="email" value="<?php echo $email?>">
+            <div class="form-group">
+                <label for="email">Your email:</label>
+                <input type="email" name="email" class="from-control" placeholder="Your email" id="email"
+                       value="<?php echo $email ?>">
 
-        </div>
+            </div>
 
-        <div class="form-group">
-            <label for="password">Your password:</label>
-            <input type="password" name="password" class="from-control" placeholder="Your password" id="password">
-        </div>
+            <div class="form-group">
+                <label for="password">Your password:</label>
+                <input type="password" name="password" class="from-control" placeholder="Your password" id="password">
+            </div>
 
-        <div class="form-group">
-            <label for="password_confirmation">confirm password:</label>
-            <input type="password" name="password_confirmation" class="from-control" placeholder="confirm your password" id="password_confirmation">
-        </div>
+            <div class="form-group">
+                <label for="password_confirmation">confirm password:</label>
+                <input type="password" name="password_confirmation" class="from-control"
+                       placeholder="confirm your password" id="password_confirmation">
+            </div>
 
-        <div class="form-group">
-            <button class="btn btn-success">Register!</button>
-        </div>
-    </form>
+            <div class="form-group">
+                <button class="btn btn-success">Register!</button>
+                <a href="login.php">If you have a account login here!</a>
+            </div>
+        </form>
 
-</div>
+    </div>
 <?php
 include 'template/footer.php';

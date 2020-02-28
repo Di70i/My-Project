@@ -12,7 +12,6 @@ $Service = new Service;
 
 <?php if ($Service->available) {
     ?>
-    <h1>Welcome to our website</h1>
 
     <?php $products = $mysqli->query("select * from `products` order by name ")->fetch_all(MYSQLI_ASSOC) ?>
    <div  class="row">

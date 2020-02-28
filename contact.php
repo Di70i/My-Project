@@ -20,7 +20,7 @@ $services = $mysqli->query("select id, name, price from services order by id ")
     <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
         <div  class="form-group">
             <label for="name"> Your name</label>
-            <input type="text" name="name" value="<?php if(isset($_SESSION['contact_form']['name'])) echo $_SESSION['contact_form']['name'] ?> "class="form-control" placeholder="Your name">
+            <input type="text" name="name" placeholder="Your name" value="<?php if(isset($_SESSION['contact_form']['name'])) echo $_SESSION['contact_form']['name'] ?> "class="form-control">
             <span class="text-danger"><?php echo $nameError ?></span>
         </div>
         <div class="form-group">
