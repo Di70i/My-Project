@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['user_name']=$name;
         $_SESSION['success_message']="Welcome , $name";
 
-       header("location: index.php");
+        header("location: index.php");
     }
 
 }
@@ -63,42 +63,40 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
     <div id="register">
+        <h1>Register</h1>
 
-        <h2>Welcome to our website</h2>
-        <h6 class="text-info">Please fil the form below</h6>
-        <hr>
         <?php include 'template/errors.php' ?>
         <form action="" method="post">
-            <div class="form-group">
-                <label for="name">Your name:</label>
-                <input type="name" name="name" class="from-control" placeholder="Your name" id="name"
-                       value="<?php echo $name ?>">
-            </div>
-
-            <div class="form-group">
+            <div class="from-group">
                 <label for="email">Your email:</label>
-                <input type="email" name="email" class="from-control" placeholder="Your email" id="email"
-                       value="<?php echo $email ?>">
-
+                <input type="email" name="email" class="form-control" placeholder="Your email" id="email"  value="<?php echo $email?>">
             </div>
 
-            <div class="form-group">
+            <div class="from-group">
+                <label for="name">Your name:</label>
+                <input type="text" name="name" class="form-control" placeholder="Your name" id="name"  value="<?php echo $name?>">
+            </div>
+
+            <div class="from-group">
                 <label for="password">Your password:</label>
-                <input type="password" name="password" class="from-control" placeholder="Your password" id="password">
+                <input type="password" name="password" class="form-control" placeholder="Your password" id="password">
             </div>
 
-            <div class="form-group">
-                <label for="password_confirmation">confirm password:</label>
-                <input type="password" name="password_confirmation" class="from-control"
-                       placeholder="confirm your password" id="password_confirmation">
+            <div class="from-group">
+                <label for="password_confirmation">Confirm password:</label>
+                <input type="password" name="password_confirmation" class="form-control"
+                       placeholder="Confirm your password" id="password_confirmation">
             </div>
 
-            <div class="form-group">
-                <button class="btn btn-success">Register!</button>
-                <a href="login.php">If you have a account login here!</a>
+            <div class="from-group">
+                <br>
+                <button class="btn btn-primary">Register!</button>
+                <a href="login.php">login here</a>
+
             </div>
         </form>
-
     </div>
+
+
 <?php
 include 'template/footer.php';

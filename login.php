@@ -32,14 +32,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             $fundUser = $userExists->fetch_assoc();
 
-            if (password_verify($password , $fundUser['password'])) {
+            if (password_verify($password , $fundUser['password'])){
 
-                  $_SESSION['logged_in']=true;
-                  $_SESSION['user_id']= $fundUser['id'];
-                  $_SESSION['user_name'] = $fundUser['name'];
-                  $_SESSION['success_message'] = "Welcome back , $fundUser[name]";
+                $_SESSION['login'] = true;
+                $_SESSION['user_id'] = $fundUser['id'];
+                $_SESSION['user_name'] = $fundUser['name'];
+                $_SESSION['success_message'] = "Welcome back, $fundUser[name]";
 
-                  header('location: index.php');
+                header('location: index.php');
             }else{
 
                  array_push($errors, "Wrong password");
@@ -58,31 +58,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 ?>
-<div id="register">
-    <form action="" method="post">
-        <h2>Welcome to our website</h2>
-        <h6 class="text-info">Please fil the form below</h6>
-        <hr>
-        <?php include 'template/errors.php'?>
 
-        <div  class="form-group row">
-            <label for="email">Your email:</label>
-            <input type="email" name="email" class="from-control" placeholder="Your email" id="email" value="<?php echo $email?>">
+    <div id="login">
 
-        </div>
+        <form action="" method="post">
+            <h2>Welcome back</h2>
+            <h5  style="color: dimgray" class="text">Please fill the form to login</h5>
+            <hr>
+            <?php include 'template/errors.php' ?>
 
-        <div class="form-group row">
-            <label for="password">Your password:</label>
-            <input type="password" name="password" class="from-control" placeholder="Your password" id="password">
-        </div>
+            <div class="from-group">
+                <label for="email">Your email:</label>
+                <input type="email" name="email" class="form-control" placeholder="Your email" id="email" value="<?php echo $email?>">
+            </div>
 
-        <div class="form-group row">
-            <button class="btn btn-success">Register!</button>
-            <a href="Password_reset.php">Forgot your password?</a>
-        </div>
-    </form>
+            <div class="from-group">
+                <label for="password">Your password:</label>
+                <input type="password" name="password" class="form-control" placeholder="Your password" id="password">
+            </div>
 
-</div>
+
+            <div class="from-group">
+                <br>
+                <button class="btn btn-primary">Login!</button>
+                <a href="reset_password.php">Forgot your password?</a>
+
+            </div>
+        </form>
+    </div>
+
+
 <?php
 include 'template/footer.php';
 

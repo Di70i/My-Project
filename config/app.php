@@ -1,6 +1,6 @@
 <?php
 $config = [
-        'app_name' => 'SDate',
+        'app_name' => 'MgStore',
         'admin_email'=> 'abdulrahmankkn@localhost',
         'lang' => 'en',
         'dir' => 'ltr',
