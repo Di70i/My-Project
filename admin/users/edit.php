@@ -7,6 +7,7 @@ if (!isset($_GET['id']) || !$_GET['id'] ) {
     die("Missing id parameter");
 }
 
+
 $st = $mysqli->prepare('select * from users where id = ? limit 1');
 $st->bind_param('i' , $userID);
 $userID = $_GET['id'];

@@ -1,5 +1,5 @@
 <?php
-$title = "Register";
+$title = "login";
 require_once 'template/header.php';
 require 'config/app.php';
 require_once 'config/database.php';
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     if (!count($errors)) {
-        $userExists=$mysqli->query("select id , email , password , name from users where email='$email' limit 1");
+        $userExists=$mysqli->query("select id , email , password , name  , role  from users where email='$email' limit 1");
 
         if (!$userExists->num_rows) {
 
@@ -34,11 +34,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             if (password_verify($password , $fundUser['password'])){
 
-                $_SESSION['login'] = true;
+                $_SESSION['logged_in'] = true;
                 $_SESSION['user_id'] = $fundUser['id'];
                 $_SESSION['user_name'] = $fundUser['name'];
-                $_SESSION['success_message'] = "Welcome back, $fundUser[name]";
+                $_SESSION['user_role'] = $fundUser['role'];
 
+                $_SESSION['success_message'] = "Welcome back, $fundUser[name]";
                 header('location: index.php');
             }else{
 
@@ -81,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="from-group">
                 <br>
                 <button class="btn btn-primary">Login!</button>
-                <a href="reset_password.php">Forgot your password?</a>
+                <a href="change_password.php">Forgot your password?</a>
 
             </div>
         </form>

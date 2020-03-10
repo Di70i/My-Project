@@ -14,6 +14,10 @@ $Service = new Service;
     ?>
 
     <?php $products = $mysqli->query("select * from `products` order by name ")->fetch_all(MYSQLI_ASSOC) ?>
+
+    <style>
+
+    </style>
     <div  class="row">
 
         <?php foreach ($products as $product){ ?>
@@ -31,6 +35,7 @@ $Service = new Service;
             </div>
         <?php } ?>
     </div>
+
 
     <?php
 }

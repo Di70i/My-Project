@@ -7,7 +7,7 @@ $services = $mysqli->query('select * from services order by id')->fetch_all(MYSQ
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $st = $mysqli->prepare('delete from services where id = ?');
-    $st->bind_param('i' , $user_Id);
+    $st->bind_param('i' , $service_ID);
     $service_ID = $_POST['service_id'];
     $st->execute();
     echo "<script>location.href = 'index.php'</script>";
