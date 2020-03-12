@@ -5,7 +5,6 @@ require 'config/app.php';
 require_once 'config/database.php';
 
 
-
 if (isset($_SESSION['logged_in'])) {
     header("location: index.php");
 }
@@ -39,8 +38,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['user_name'] = $fundUser['name'];
                 $_SESSION['user_role'] = $fundUser['role'];
 
-                $_SESSION['success_message'] = "Welcome back, $fundUser[name]";
-                header('location: index.php');
+
+                if ($fundUser['role'] == 'admin'){
+                    header('location: admin/index.php');
+                }else{
+
+                    $_SESSION['success_message'] = "Welcome back, $fundUser[name]";
+                    header('location: index.php');
+                }
+
             }else{
 
                  array_push($errors, "Wrong password");

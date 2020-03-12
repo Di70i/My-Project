@@ -1,8 +1,8 @@
 
 <div class="sidebar-wrapper">
     <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text">
-            Admin Panel
+        <a href="<?php echo $config['app_url']?>" class="simple-text">
+            <?php echo $config['app_name']?>
         </a>
     </div>
 

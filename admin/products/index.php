@@ -1,5 +1,5 @@
 <?php
-$title = 'Services';
+$title = 'products';
 $icon = 'dropbox';
 include __DIR__.'/../template/header.php';
 
@@ -35,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                 <tr>
                     <th>#</th>
                     <th>name</th>
+                    <th>color</th>
                     <th>description</th>
                     <th>price</th>
                     <th>image</th>
@@ -46,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                     <tr>
                         <td><?php echo $product['id'] ?></td>
                         <td><?php echo  $product['name'] ?></td>
+                        <td><?php echo  $product['color'] ?></td>
                         <td><?php echo  $product['description'] ?></td>
                         <td><?php echo  $product['price'] ?></td>
                         <td><img src="<?php echo $config['app_url'].'/'.$product['image']?>" width="70" height="70"></td>
