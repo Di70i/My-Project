@@ -69,8 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div id="login">
 
         <form action="" method="post">
-            <h2>Welcome back</h2>
-            <h5  style="color: dimgray" class="text">Please fill the form to login</h5>
+            <h5  style="color: black" class="text">Please fill the form to login</h5>
             <hr>
             <?php include 'template/errors.php' ?>
 
@@ -84,13 +83,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input type="password" name="password" class="form-control" placeholder="Your password" id="password">
             </div>
 
-
             <div class="from-group">
                 <br>
                 <button class="btn btn-primary">Login!</button>
-                <a href="change_password.php">Forgot your password?</a>
-
+                <a href="Password_reset.php">Forgot your password?</a>
             </div>
+            <br>
         </form>
     </div>
 

@@ -1,17 +1,16 @@
 <?php
-$title = "password reset";
+$title="password reset";
 require_once 'template/header.php';
 require 'config/app.php';
 require_once 'config/database.php';
-
 
 
 if (isset($_SESSION['logged_in'])) {
     header("location: index.php");
 }
 
-$errors = [];
-$email = '';
+$errors=[];
+$email='';
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -42,18 +41,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                           values ('$userId' , '$token' , '$expires_at')
                            ");
 
-            $headers = 'MIME-Version: 1.0' . "\r\n";
-            $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
+            $headers='MIME-Version: 1.0' . "\r\n";
+            $headers.='Content-type: text/html; charset=UTF-8' . "\r\n";
 
-            $headers .='From: ' .$config['admin_email']."\r\n".
-                'Reply-To: '.$config['admin_email']."\r\n".
+            $headers.='From: ' . $config['admin_email'] . "\r\n" .
+                'Reply-To: ' . $config['admin_email'] . "\r\n" .
                 'X-Mailer: PHP/' . phpversion();
 
-            $htmlMessage = '<html><body>';
-            $htmlMessage .= '<p style="color:#ff0000;">'. $message .'</p>';
-            $htmlMessage .= '</body></html>';
+            $htmlMessage='<html><body>';
+            $htmlMessage.='<p style="color:#ff0000;">' . $message . '</p>';
+            $htmlMessage.='</body></html>';
 
-            mail($email ,"Welcome", $htmlMessage , $headers);
+            mail($email, "Welcome", $htmlMessage, $headers);
         }
 
         $_SESSION['success_message']='Please check your email for password reset link';
@@ -63,25 +62,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 ?>
-<div id="password_rest">
+    <div id="password_rest">
         <h2>Password reset</h2>
-        <h6 class="text-info">fill your email to reset your password</h6>
-        <hr>
-        <?php include 'template/errors.php'?>
+        <?php include 'template/errors.php' ?>
 
         <form action="" method="post">
-        <div class="form-group">
-            <label for="email">Your email:</label>
-            <input type="email" name="email" class="from-control" placeholder="Your email" id="email" value="<?php echo $email?>">
-
-        </div>
-
-        <div class="form-group">
-            <button class="btn btn-primary">Request password reset link!</button>
-        </div>
-    </form>
-
-</div>
+            <div class="from-group">
+                <label for="email">Your password:</label>
+                <input type="email" name="email" class="form-control" placeholder="Your E-mail" id="email"  value="<?php echo $email?>">
+            </div>
+            <br>
+            <div class="form-group">
+                <button class="btn btn-primary">Request password reset link!</button>
+            </div>
+            <br>
+        </form>
+    </div>
 <?php
 include 'template/footer.php';
 

@@ -8,84 +8,106 @@ ini_set('display_errors', 1);
 
 ?>
     <!DOCTYPE html>
-<html dir="<?php echo $config['dir'] ?>" lang="<?php echo $config['lang'] ?>">
+    <html lang="en">
     <head>
-        <title><?php echo $config['app_name'] . " | " . $title ?></title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Libre+Barcode+39&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
               crossorigin="anonymous">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-        <link rel="stylesheet"
-              href="http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css">
-        <link rel="stylesheet" href="style.css">
-
-        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <style>
+            /* background for the all page */
+            body {
+
+
+            }
+
+            /* background for the all page */
+            .container {
+                width: 1170px;
+                margin: auto;
+            }
+
+            .header .Navbar {
+                color: white;
+                overflow: hidden;
+                text-transform: uppercase;
+
+            }
+
+            .header .Navbar h2 a {
+                margin-left: 490px;
+                font-family: 'Libre Barcode 39', cursive;
+                color: black;
+                font-size: 50px;
+                float: left;
+
+            }
+
+            .header .Navbar ul {
+                list-style: none;
+                padding-left: 0;
+                overflow: hidden;
+                float: right;
+            }
+
+            .header .Navbar li {
+                float: left;
+                padding: 10px;
+            }
+
+            .header .Navbar li a  {
+                color: black;
+                font-family: Styles;
+            }
+
+            .header .Navbar li span {
+                font-family: Styles;
+                color: black;
+
+            }
+
+            .header .Navbar ul li  {
+                float: left;
+                padding: 10px;
+            }
             .custom-card-image {
                 height: 200px;
                 background-size: cover;
                 background-position: center;
             }
 
-            .navbar {
-                background-color: darkslategrey !important;
-            }
-
-            .navbar-brand {
-                color: wheat !important;
-            }
-
-            .nav-link {
-                color: wheat !important;
-            }
-
-
         </style>
     </head>
 <body>
-    <div class="container ">
-        <nav class="navbar navbar-expand-lg navbar navbar-light bg-light shadow">
-            <i class="fas fa-store-alt" style='font-size:48px;color:wheat'></i><a class="navbar-brand"
-                                                                                  href="<?php echo $config['app_url'] ?>index.php"><span><?php echo $config['app_name'] ?></<span></a></i>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="<?php echo $config['app_url'] ?>store.php">تسوق<span class="sr-only">(current)</span></a>
+    <div class="header">
+        <div class="Navbar container">
+            <div class="container">
+                <h2>
+                <a href="<?php echo $config['app_url'] ?>index.php">Stor</a>
+                </h2>
+                <ul>
+<?php if (!isset($_SESSION['logged_in'])): ?>
+                    <li>
+                        <a href="<?php echo $config['app_url'] ?>login.php">Login</a>
                     </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo $config['app_url'] ?>contact.php">تواصل معنا</a>
+                    <li>
+                        <a href="<?php echo $config['app_url'] ?>register.php">REGISTER</a>
                     </li>
+<?php else: ?>
+                    <li>
+                        <span href="#">Hello,<?php echo $_SESSION['user_name'] ?></span>
+                    </li>
+                    <li>
+                        <a href="<?php echo $config['app_url'] ?>logout.php">logout</a>
+                    </li>
+<?php endif ?>
                 </ul>
-
-
-                <ul class="navbar-nav ml-auto">
-                    <?php if (!isset($_SESSION['logged_in'])): ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?php echo $config['app_url'] ?>login.php">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?php echo $config['app_url'] ?>register.php">Register</a>
-                        </li>
-                    <?php else: ?>
-                        <li class="nav-item">
-                            <span href="#" class="nav-link">Hello,<?php echo $_SESSION['user_name'] ?></span>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?php echo $config['app_url'] ?>logout.php">logout</a>
-                        </li>
-                    <?php endif ?>
-                </ul>
-
             </div>
-        </nav>
+        </div>
     </div>
     <div class="container pt-5">
 <?php include 'template/message.php';

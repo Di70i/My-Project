@@ -70,21 +70,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <hr>
         <?php include 'template/errors.php'?>
         <form action="" method="post">
-        <div class="form-group">
-            <label for="password">New password:</label>
-            <input type="password" name="password" class="from-control" placeholder="Your new password" id="password">
 
-        </div>
+            <div class="from-group">
+                <label for="password">New password:</label>
+                <input type="password" name="password" class="form-control" placeholder="Your password" id="password">
+            </div>
 
-        <div class="form-group">
-            <label for="password_confirmation">Confirm New password:</label>
-            <input type="password" name="password_confirmation" class="from-control" placeholder="Confirm password" id="password_confirmation">
-
+            <div class="from-group">
+                <label for="password_confirmation">Confirm password:</label>
+                <input type="password" name="password_confirmation" class="form-control"
+                       placeholder="Confirm your password" id="password_confirmation">
+            </div>
+         <br>
         </div>
         <div class="form-group">
             <button class="btn btn-primary">Change password!</button>
         </div>
-    </form>
+            <br>
+        </form>
 
 </div>
 <?php

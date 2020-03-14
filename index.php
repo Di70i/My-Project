@@ -19,7 +19,7 @@ $Service = new Service;
     <div  class="row">
 
         <?php foreach ($products as $product){ ?>
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-6">
                 <div class="card mb-3 shadow">
                     <div class="card-body">
                         <div class="custom-card-image" style="background-image: url('<?php echo $config['app_url'].$product['image']?>')"></div>
