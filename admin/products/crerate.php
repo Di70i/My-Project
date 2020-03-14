@@ -22,8 +22,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if(empty($_FILES['image']['name'])){array_push($errors, "Image is required");}
 
     if(!count($errors)){
-        $date = date('Ym');
-        $upload = new Upload('uploads/products'.$date);
+        $upload = new Upload('المنتجات');
         $upload->file = $_FILES['image'];
         $errors = $upload->upload();
     }
