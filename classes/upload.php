@@ -46,7 +46,7 @@ class Upload {
                 return false;
             }
         }
-       return true;
+        return true;
     }
 
     public function upload(){

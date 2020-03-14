@@ -1,12 +1,11 @@
 <?php
-$title='Create products';
+$title='Create Service';
 $icon='cubes';
 include __DIR__ . '/../template/header.php';
 require_once __DIR__ . '/../../classes/upload.php';
 
 $errors=[];
 $name='';
-$color='';
 $description='';
 $price='';
 
@@ -14,7 +13,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 
     $name = mysqli_real_escape_string($mysqli, $_POST['name']);
-    $color = mysqli_real_escape_string($mysqli, $_POST['color']);
     $price = mysqli_real_escape_string($mysqli, $_POST['price']);
     $description = mysqli_real_escape_string($mysqli, $_POST['description']);
 
@@ -33,7 +31,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     if(!count($errors)){
 
-        $query = "insert into products (name, color , description, price, image) values ('$name', '$color', '$description', '$price', '$upload->filePath')";
+        $query = "insert into products (name, description, price, image) values ('$name', '$description', '$price', '$upload->filePath')";
         $mysqli->query($query);
 
         if($mysqli->error){
@@ -52,15 +50,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             <?php include __DIR__ . '/../template/errors.php'; ?>
             <form action="" method="post" enctype="multipart/form-data">
                 <div class="from-group">
-                    <label for="name">product Name :</label>
+                    <label for="name">Name service:</label>
                     <input type="text" name="name" class="form-control" placeholder="Your name" id="name"
                            value="<?php echo $name ?>">
-                </div>
-                <br>
-                <div class="from-group">
-                    <label for="color">product color</label>
-                    <input type="text" name="color" class="form-control" placeholder="Your color" id="color"
-                           value="<?php echo $color?>">
                 </div>
                 <br>
                 <div class="from-group">
