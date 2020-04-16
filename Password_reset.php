@@ -62,14 +62,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 ?>
+    <div class="container text-center">
     <div id="password_rest">
-        <h2>Password reset</h2>
+        <h1  style="color: black;" class="title pt-3 title text-center">Password Rest</h1>
         <?php include 'template/errors.php' ?>
 
         <form action="" method="post">
             <div class="from-group">
                 <label for="email">Your password:</label>
-                <input type="email" name="email" class="form-control" placeholder="Your E-mail" id="email"  value="<?php echo $email?>">
+                <input type="email" name="email" class="form-control w-50 center-block" placeholder="Your E-mail" id="email"  value="<?php echo $email?>">
             </div>
             <br>
             <div class="form-group">
@@ -78,6 +79,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <br>
         </form>
     </div>
+    </div>
 <?php
-include 'template/footer.php';
 

@@ -11,7 +11,7 @@ if (!$user->isAdmin()){
 }
 
 $st=$mysqli->prepare("select *, m.id as message_id
-        , s.id service_id from messages m
+        , s.id as service_id from messages m
         left join services s
         on m.service_id = s.id
         order by m.id");

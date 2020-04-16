@@ -14,7 +14,10 @@ $st->bind_param('i', $product_Id);
 $product_Id=$_GET['id'];
 $st->execute();
 
+
+
 $product=$st->get_result()->fetch_assoc();
+
 
 $name = $product['name'];
 $description = $product['description'];
@@ -22,7 +25,6 @@ $price = $product['price'];
 $image = $product['image'];
 
 $errors=[];
-
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -48,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (!count($errors)) {
         $st=$mysqli->prepare('update products set name = ?, description = ?, price = ? , image = ?  where id = ?');
-        $st->bind_param('ssdsi', $dbName, $dbDescription, $dbPrice, $dbImage , $dbId);
+        $st->bind_param('ssdsi', $dbName, $dbDescription, $dbPrice , $dbImage , $dbId);
         $dbName = $_POST['name'];
         $dbDescription = $_POST['description'];
         $dbPrice = $_POST['price'];
@@ -75,7 +77,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <input type="text" name="name" class="form-control" placeholder="Your name" id="name"
                            value="<?php echo $name ?>">
                 </div>
+
                 <br>
+
                 <div class="from-group">
                     <label for="description">Description:</label>
                     <textarea name="description" id="description"
@@ -87,6 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <label for="price">Price:</label>
                     <input type="number" name="price" class="form-control" id="price" value="<?php echo $price ?>">
                 </div>
+
 
                 <br>
 

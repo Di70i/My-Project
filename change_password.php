@@ -65,20 +65,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
-<div id="password_rest">
+    <div class="container text-center">
+<div id="password_new">
         <h2>Create a new password</h2>
-        <hr>
+    <h3 style="color: black;" class="text pt-3 title text-center">Password Rest</h3>
+
+    <hr>
         <?php include 'template/errors.php'?>
         <form action="" method="post">
 
             <div class="from-group">
                 <label for="password">New password:</label>
-                <input type="password" name="password" class="form-control" placeholder="Your password" id="password">
+                <input type="password" name="password" class="form-control w-50 center-block" placeholder="Your password" id="password">
             </div>
 
             <div class="from-group">
                 <label for="password_confirmation">Confirm password:</label>
-                <input type="password" name="password_confirmation" class="form-control"
+                <input type="password" name="password_confirmation" class="form-control w-50 center-block"
                        placeholder="Confirm your password" id="password_confirmation">
             </div>
          <br>
@@ -90,6 +93,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </form>
 
 </div>
+</div>
 <?php
-include 'template/footer.php';
 

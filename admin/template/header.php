@@ -44,6 +44,11 @@ if (!$user->isAdmin()){
 
 </head>
 <body>
+<style>
+    body {
+        font-size: 14px;
+    }
+</style>
 <div class="wrapper">
     <div class="sidebar" data-color="black">
 

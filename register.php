@@ -61,43 +61,48 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 ?>
+    <div class="pt-3 container text-center">
 
     <div id="register">
-        <h1>Register</h1>
+        <h1  style="color: black;" class="title text-center">Create new Account</h1>
 
         <?php include 'template/errors.php' ?>
         <form action="" method="post">
             <div class="from-group">
-                <label for="email">Your email:</label>
-                <input type="email" name="email" class="form-control" placeholder="Your email" id="email"  value="<?php echo $email?>">
+                <label for="email">Email:</label>
+                <input type="email" name="email" class="form-control  w-50 center-block" placeholder="Your email" id="email"  value="<?php echo $email?>">
             </div>
+<br>
+            <div class="from-group">
+                <label for="name">Name:</label>
+                <input type="text" name="name" class="form-control  w-50 center-block" placeholder="Your name" id="name"  value="<?php echo $name?>">
+            </div>
+            <br>
 
             <div class="from-group">
-                <label for="name">Your name:</label>
-                <input type="text" name="name" class="form-control" placeholder="Your name" id="name"  value="<?php echo $name?>">
+                <label for="password">Password:</label>
+                <input type="password" name="password" class="form-control  w-50 center-block" placeholder="Your password" id="password">
             </div>
-
-            <div class="from-group">
-                <label for="password">Your password:</label>
-                <input type="password" name="password" class="form-control" placeholder="Your password" id="password">
-            </div>
+            <br>
 
             <div class="from-group">
                 <label for="password_confirmation">Confirm password:</label>
-                <input type="password" name="password_confirmation" class="form-control"
+                <input type="password" name="password_confirmation" class="form-control  w-50 center-block"
                        placeholder="Confirm your password" id="password_confirmation">
             </div>
+            <br>
 
             <div class="from-group">
                 <br>
-                <button class="btn btn-primary">Register!</button>
-                <a href="login.php">login here</a>
+                <a href="login.php"><small>Login here...</small></a>
                 <br>
+                <br>
+                <button class="btn btn-primary">Register!</button>
             </div>
             <br>
         </form>
     </div>
+    </div>
 
 
 <?php
-include 'template/footer.php';

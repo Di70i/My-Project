@@ -15,6 +15,9 @@ $mysqli = new mysqli(
 
 );
 
+
+
+
 if ($mysqli->connect_error){
     die("Error connecting to database" . $mysqli->connect_error);
 }

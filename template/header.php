@@ -9,120 +9,138 @@ ini_set('display_errors', 1);
 ?>
     <!DOCTYPE html>
     <html lang="en">
+    <meta charset="utf-8">
     <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="style.css">
-        <link href="https://fonts.googleapis.com/css?family=UnifrakturCook:700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        <title><?php echo $config['app_name'] ?></title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
               crossorigin="anonymous">
-        <script src="https://kit.fontawesome.com/5e3092f30b.js" crossorigin="anonymous"></script>
-         <title><?php echo $config['app_name']?></title>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+        <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Vibes&display=swap" rel="stylesheet">
 
         <style>
-            /* background for the all page */
-            body {
-
+            body{
+                font-family: 'Anonymous Pro', monospace;
+                background:#eee;
+            }
+            .navbar-nav{
+                background-color: ; ! important;
 
             }
 
-            /* background for the all page */
-            .container {
-                width: 1170px;
-                margin: auto;
-
-            }
-
-            .header .Navbar {
-                color: white;
-                overflow: hidden;
-                text-transform: uppercase;
-
-            }
-
-            .header .Navbar h2 a {
+            .nav-title {
+                float: none;
+                font-family: 'Vibes', cursive;
+                color: black; ! important;
                 text-decoration: none;
-                text-align: center;
-                margin-left: 490px;
-                font-family: 'UnifrakturCook', cursive;
-                color: black;
-                font-size: 50px;
-                float: left;
-
+                font-size: 30px;
             }
 
-            .header .Navbar ul {
-                list-style: none;
-                padding-left: 0;
-                overflow: hidden;
-                float: right;
+
+            .nav-link {
+                color: #777777; ! important;
+                font-size: 17px;
             }
 
-            .header .Navbar li {
-                float: left;
-                padding: 10px;
-            }
-
-            .header .Navbar li a  {
-                text-decoration: none;
-                color: black;
-                font-family: Styles;
-            }
-
-            .header .Navbar li span {
-                font-family: Styles;
-                color: black;
-
-            }
-
-            .header .Navbar ul li  {
-                float: left;
-                padding: 10px;
-            }
 
             .custom-card-image {
                 height: 200px;
+                width: auto;
                 background-size: cover;
                 background-position: center;
             }
-            .fas {
-                margin:10px ;
-                font-size: 27px;
-            color: black;
+
+            .custom-card-image1 {
+                margin-top:50px;
+                height: 300px;
+                width: auto;
+                background-size: 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+
             }
+            .custom-card-image2 {
+                margin-top:50px;
+                height: 300px;
+                width: auto;
+                background-size: 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+
+            }
+            .card-image_shopping {
+                height: 100px;
+                width: auto;
+                background-size: cover;
+                background-position: center;
+            }
+            .fas{
+
+            }
+            #cart_count{
+                background-color: orange;
+                color: black;
+                font-size: 12px;
+                margin-bottom: 20px;
+                padding: -5px 40px -5px -5px;
+                text-align: center;
+                vertical-align: top;
+            }
+
 
         </style>
     </head>
 <body>
-    <div class="header container-fluid">
-        <div class="Navbar ">
-            <div class="container">
-                <h2>
-                <a href="<?php echo $config['app_url'] ?>index.php">Store</a>
-                </h2>
-                <ul>
-                    <a href="<?php echo $config['app_url'] ?>shopping_card.php">
-                        <i class="fas fa-shopping-cart"></i>
-                    </a>
-<?php if (!isset($_SESSION['logged_in'])): ?>
 
-                    <li>
-                        <a href="<?php echo $config['app_url'] ?>login.php">Login</a>
+    <a class="text-center nav-title"
+       href="<?php echo $config['app_url']?>"><p class="p-2 nav-title"><?php echo $config['app_name']?></p>
+    </a>
+
+    <nav class="container navbar navbar-expand-lg p-4">
+
+<!--        <a class="navbar-brand m-auto" -->
+<!--           href="--><?php //echo $config['app_url']?><!--"><span class="">--><?php //echo $config['app_name']?><!--</span>-->
+<!--        </a>-->
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+<?php if (!isset($_SESSION['logged_in'])): ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo $config['app_url'] ?>login.php"><i style="color: #676767" class="fas fa-user"></i></a>
                     </li>
-                    <li>
-                        <a href="<?php echo $config['app_url'] ?>register.php">REGISTER</a>
-                    </li>
+
 <?php else: ?>
-                    <li>
-                        <span href="#">Hello,<?php echo $_SESSION['user_name'] ?></span>
-                    </li>
-                    <li>
-                        <a href="<?php echo $config['app_url'] ?>logout.php">logout</a>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="<?php echo $config['app_url'] ?>logout.php">Logout</a>
                     </li>
 <?php endif ?>
-                </ul>
+
+                <li class="nav-item ">
+                    <a href="<?php echo $config['app_url'] ?>shopping_card.php" class="nav-link">
+                        <i class="fas fa-shopping-cart fa-sm" style="color: #676767">Cart</i>
+                        <?php
+
+                        if (isset($_SESSION['cart'])){
+                            $count = count($_SESSION['cart']);
+                            echo "<span id=\"cart_count\" class='badge text-center'>$count</span>";
+                        }else{
+                            echo "<span id=\"cart_count\" class='badge text-center'>0</span>";
+                        }
+
+                        ?>
+                    </a>
+                </li>
             </div>
         </div>
-    </div>
-    <div class="container pt-5">
+    </nav>
+
+    <div class="container" style="">
 <?php include 'template/message.php';

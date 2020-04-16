@@ -45,48 +45,54 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     $_SESSION['success_message'] = "Welcome back, $fundUser[name]";
                     header('location: index.php');
+
                 }
 
             }else{
 
-                 array_push($errors, "Wrong password");
+                array_push($errors, "Wrong password");
 
             }
 
         }
 
-}
+    }
     if (!count($errors)) {
-        
+
         $query_login="select password , email  from users  where  LIMIT 1";
         $mysqli->query($query_login);
     }
 
 }
 
+
 ?>
 
-    <div id="login">
+
+    <div class="pt-3 container text-center" id="login">
 
         <form action="" method="post">
-            <h5  style="color: black" class="text">Please fill the form to login</h5>
-            <hr>
+            <h1  style="color: black" class="title text-center">تسجيل الدخول</h1>
+            <br>
             <?php include 'template/errors.php' ?>
 
             <div class="from-group">
-                <label for="email">Your email:</label>
-                <input type="email" name="email" class="form-control" placeholder="Your email" id="email" value="<?php echo $email?>">
+                <label for="email">Email:</label>
+                <input type="email" name="email" class="form-control w-50 center-block" placeholder="Your email" id="email" value="<?php echo $email?>">
+            </div>
+<br>
+            <div class="from-group">
+                <label for="password">Password:</label>
+                <input type="password" name="password" class="form-control  center-block  w-50" placeholder="Your password" id="password">
             </div>
 
-            <div class="from-group">
-                <label for="password">Your password:</label>
-                <input type="password" name="password" class="form-control" placeholder="Your password" id="password">
-            </div>
-
-            <div class="from-group">
-                <br>
+            <div class="from-group text-center">
+                <br><br>
                 <button class="btn btn-primary">Login!</button>
-                <a href="Password_reset.php">Forgot your password?</a>
+                <br>
+                <br>
+                <a href="register.php">  Creat account </a><strong>|</strong><a href="Password_reset.php"> Forgot your password? </a>
+
             </div>
             <br>
         </form>
@@ -94,5 +100,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 <?php
-include 'template/footer.php';
-
